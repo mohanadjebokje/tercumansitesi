@@ -5,7 +5,7 @@ export const metadata = {
   description: "خدمات ترجمة محلفة وموثقة احترافية في يوزغات للوثائق القانونية والأكاديمية والطبية والرسمية مع دعم إلكتروني.",
   alternates: {
     canonical: "/ar",
-    languages: { "tr-TR": "/", "en": "/en", "ar": "/ar" }
+    languages: { "tr-TR": "/", "en": "/en", "ar": "/ar", "de": "/de", "fr": "/fr", "fa": "/fa" }
   },
   openGraph: {
     locale: "ar_AR",

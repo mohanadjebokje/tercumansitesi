@@ -5,7 +5,7 @@ export const metadata = {
   description: "Professional sworn and notarized translation services in Yozgat. Legal, academic, medical and official document translation with online support.",
   alternates: {
     canonical: "/en",
-    languages: { "tr-TR": "/", "en": "/en", "ar": "/ar" }
+    languages: { "tr-TR": "/", "en": "/en", "ar": "/ar", "de": "/de", "fr": "/fr", "fa": "/fa" }
   },
   openGraph: {
     locale: "en_US",

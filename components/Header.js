@@ -18,13 +18,28 @@ const labels = {
     home: "الرئيسية", about: "من نحن", services: "خدماتنا",
     notary: "خدمات الكاتب بالعدل", online: "الترجمة عن بُعد", contact: "التواصل والموقع",
     support: "دعم مباشر عبر واتساب", menu: "فتح أو إغلاق القائمة"
+  },
+  de: {
+    home: "Startseite", about: "Über uns", services: "Leistungen",
+    notary: "Notardienste", online: "Online-Service", contact: "Kontakt & Standort",
+    support: "WhatsApp-Support", menu: "Menü öffnen oder schließen"
+  },
+  fr: {
+    home: "Accueil", about: "À propos", services: "Services",
+    notary: "Services notariaux", online: "Service en ligne", contact: "Contact & adresse",
+    support: "Assistance WhatsApp", menu: "Ouvrir ou fermer le menu"
+  },
+  fa: {
+    home: "صفحه اصلی", about: "درباره ما", services: "خدمات",
+    notary: "خدمات دفتر اسناد رسمی", online: "خدمات آنلاین", contact: "تماس و نشانی",
+    support: "پشتیبانی واتساپ", menu: "باز یا بسته کردن منو"
   }
 };
 
 export default function Header({ locale = "tr" }) {
   const [open, setOpen] = useState(false);
   const t = labels[locale];
-  const base = locale === "en" ? "/en" : locale === "ar" ? "/ar" : "/";
+  const base = locale === "tr" ? "/" : `/${locale}`;
   const links = [
     [t.about, "about"], [t.services, "services"], [t.notary, "notary-info"],
     [t.online, "online-support"], [t.contact, "contact"]
@@ -55,6 +70,9 @@ export default function Header({ locale = "tr" }) {
             <Link className={locale === "tr" ? "selected" : ""} href="/" hrefLang="tr">TR</Link>
             <Link className={locale === "en" ? "selected" : ""} href="/en" hrefLang="en">EN</Link>
             <Link className={locale === "ar" ? "selected" : ""} href="/ar" hrefLang="ar">AR</Link>
+            <Link className={locale === "de" ? "selected" : ""} href="/de" hrefLang="de">DE</Link>
+            <Link className={locale === "fr" ? "selected" : ""} href="/fr" hrefLang="fr">FR</Link>
+            <Link className={locale === "fa" ? "selected" : ""} href="/fa" hrefLang="fa">FA</Link>
           </span>
         </nav>
       </div>

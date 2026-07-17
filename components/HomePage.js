@@ -111,6 +111,39 @@ const copy = {
     steps: [["جهّز الوثيقة", "التقط صورة واضحة أو امسحها بصيغة PDF."],["أرسلها بالبريد الإلكتروني", "أرسل الوثيقة إلى بريدنا الرسمي."],["وافق على العرض", "أكد السعر وموعد التسليم."],["استلم الترجمة", "استلم النسخة الرقمية أو الأصل المصدق عبر الشحن."]],
     contactEyebrow: "تواصلوا معنا", contactTitle: "مكتبنا وقنوات التواصل",
     contactHead: "معلومات التواصل", address: "عنوان المكتب", phone: "رقم الهاتف", email: "البريد الإلكتروني", hours: "ساعات العمل", map: "موقعنا على الخريطة"
+  },
+  de: {
+    visual:["Yozgat Çamlık Nationalpark","Uhrturm im Zentrum von Yozgat"],badge:"Mit 5,0 bei Google bewertet",location:"Bild",
+    heroTitle:"Zuverlässige und schnelle Übersetzungen für offizielle Dokumente",heroText:"Beglaubigte, juristische und offizielle Übersetzungen werden in unserem Büro im Mevlana İş Merkezi sorgfältig erstellt. Besuchen Sie uns oder senden Sie Ihre Dokumente online.",send:"Dokumente online senden",office:"Bürostandort",
+    features:[["Beeidigt & beglaubigt","Übersetzungen für amtliche und notarielle Verfahren."],["Schnelle Lieferung","Flexible Lösungen mit klar vereinbarten Lieferzeiten."],["Viele Sprachen","Übersetzungen auf Türkisch, Deutsch, Englisch, Arabisch, Französisch und weiteren Sprachen."]],
+    aboutEyebrow:"Wer wir sind",aboutTitle:"Beeidigter Übersetzer in Yozgat",aboutHead:"Erfahrung, der Sie vertrauen können",aboutText:"Von unserem Büro im Zentrum von Yozgat bieten wir Privat- und Geschäftskunden professionelle Übersetzungslösungen nach amtlichen Anforderungen. Online unterstützen wir Kunden in der gesamten Türkei.",
+    points:["Professionelle beeidigte Übersetzer","Koordination mit Notaren","Datenschutz und Sicherheit","Online-Annahme und Kurierversand"],
+    serviceEyebrow:"Unsere Leistungen",serviceTitle:"Was übersetzen wir?",services:[["Notariell beglaubigte Übersetzung","Diplome, Reisepässe, Ausweise und Personenstandsurkunden."],["Juristische Übersetzung","Gerichtsentscheidungen, Verträge, Vollmachten und Rechtsunterlagen."],["Akademische Übersetzung","Arbeiten, Artikel, Zeugnisse und wissenschaftliche Veröffentlichungen."],["Wirtschaft & Finanzen","Unternehmensunterlagen, Abschlüsse und Geschäftskorrespondenz."],["Medizinische Übersetzung","Arztberichte, Entlassungsberichte und medizinische Dokumente."],["Dolmetschen","Unterstützung bei Notaren, Gerichten und Geschäftsterminen."]],
+    notaryEyebrow:"Leitfaden zur Beglaubigung",notaryTitle:"Notarielle Übersetzungsverfahren",notaryHead:"1. Notariat Yozgat",notaryText:"Das Notariat mit unserer Eidesakte liegt in der Nähe. Bei Bedarf erklären wir nach der Übersetzung den Beglaubigungsprozess.",common:"Häufig beglaubigte Dokumente",documents:["Verträge und Verpflichtungen","Vollmachten und Genehmigungen","Diplome und Zeugnisse","Reisepässe und Ausweise","Amtliche Mitteilungen","Erb- und Gerichtsunterlagen"],
+    onlineBadge:"Kein Bürobesuch nötig",onlineTitle:"Online senden und an Ihre Adresse liefern lassen",onlineText:"Senden Sie Ihr Dokument per E-Mail. Nach Bestätigung von Preis, Lieferzeit und Beglaubigung beginnen wir.",steps:[["Dokument vorbereiten","Machen Sie ein klares Foto oder einen PDF-Scan."],["Per E-Mail senden","Senden Sie es an unsere offizielle Adresse."],["Angebot bestätigen","Preis und Liefertermin bestätigen."],["Übersetzung erhalten","Digital oder beglaubigt per Kurier erhalten."]],
+    contactEyebrow:"Kontakt",contactTitle:"Unser Büro und Kontaktmöglichkeiten",contactHead:"Kontaktinformationen",address:"Büroadresse",phone:"Telefon",email:"E-Mail-Adresse",hours:"Öffnungszeiten",map:"Unser Standort"
+  },
+  fr: {
+    visual:["Parc national Çamlık de Yozgat","Tour de l’horloge de Yozgat"],badge:"Traducteur noté 5,0 sur Google",location:"Image",
+    heroTitle:"Traduction fiable et rapide de vos documents officiels",heroText:"Vos traductions assermentées, notariées, juridiques et officielles sont préparées avec soin dans notre bureau du centre d’affaires Mevlana. Venez au bureau ou envoyez vos documents en ligne.",send:"Envoyer en ligne",office:"Adresse du bureau",
+    features:[["Assermenté & notarié","Traductions adaptées aux démarches officielles et notariales."],["Livraison rapide","Solutions flexibles avec des délais clairement convenus."],["Plusieurs langues","Traduction en turc, français, anglais, allemand, arabe et bien d’autres langues."]],
+    aboutEyebrow:"Qui sommes-nous ?",aboutTitle:"Traducteur assermenté à Yozgat",aboutHead:"Une expérience digne de confiance",aboutText:"Depuis notre bureau au centre de Yozgat, nous proposons aux particuliers et aux entreprises des solutions professionnelles conformes aux procédures officielles. Nous accompagnons aussi nos clients partout en Turquie en ligne.",
+    points:["Traducteurs assermentés","Coordination avec les notaires","Confidentialité et sécurité","Réception en ligne et livraison"],
+    serviceEyebrow:"Nos services",serviceTitle:"Que traduisons-nous ?",services:[["Traduction notariée","Diplômes, passeports, cartes d’identité et actes d’état civil."],["Traduction juridique","Décisions de justice, contrats, procurations et documents légaux."],["Traduction académique","Thèses, articles, relevés de notes et publications."],["Commerce & finance","Documents de société, états financiers et correspondance."],["Traduction médicale","Rapports médicaux, comptes rendus et documents de santé."],["Interprétation","Assistance chez le notaire, au tribunal et en réunion."]],
+    notaryEyebrow:"Guide de traduction notariée",notaryTitle:"Procédures de traduction notariale",notaryHead:"1er notaire de Yozgat",notaryText:"Le notaire détenant notre acte de serment se trouve près du bureau. Nous expliquons la certification lorsqu’elle est nécessaire.",common:"Documents fréquemment certifiés",documents:["Contrats et engagements","Procurations et autorisations","Diplômes et relevés","Passeports et identités","Notifications officielles","Documents successoraux et judiciaires"],
+    onlineBadge:"Aucune visite nécessaire",onlineTitle:"Envoyez en ligne et recevez à votre adresse",onlineText:"Envoyez votre document par e-mail. Nous commençons après confirmation du prix, du délai et des exigences notariales.",steps:[["Préparez le document","Prenez une photo nette ou numérisez en PDF."],["Envoyez par e-mail","Utilisez notre adresse officielle."],["Validez le devis","Confirmez le prix et le délai."],["Recevez la traduction","Version numérique ou original certifié par courrier."]],
+    contactEyebrow:"Contactez-nous",contactTitle:"Notre bureau et nos coordonnées",contactHead:"Coordonnées",address:"Adresse du bureau",phone:"Téléphone",email:"Adresse e-mail",hours:"Horaires",map:"Notre emplacement"
+  },
+  fa: {
+    visual:["پارک ملی چاملیک یوزگات","برج ساعت مرکز یوزگات"],badge:"مترجم با امتیاز ۵٫۰ گوگل",location:"تصویر",
+    heroTitle:"ترجمه سریع و قابل اعتماد برای مدارک رسمی شما",heroText:"ترجمه‌های رسمی، حقوقی و محضری با دقت در دفتر ما در مرکز تجاری مولانا آماده می‌شوند. می‌توانید حضوری مراجعه کنید یا مدارک را آنلاین بفرستید.",send:"ارسال آنلاین مدارک",office:"نشانی دفتر",
+    features:[["ترجمه رسمی و محضری","ترجمه مناسب برای امور اداری و دفتر اسناد رسمی."],["تحویل سریع","راهکارهای منعطف با زمان تحویل شفاف."],["زبان‌های متعدد","ترجمه به ترکی، فارسی، انگلیسی، آلمانی، عربی، فرانسوی و زبان‌های دیگر."]],
+    aboutEyebrow:"درباره ما",aboutTitle:"مترجم رسمی در یوزگات",aboutHead:"تجربه‌ای قابل اعتماد",aboutText:"در دفتر مرکزی یوزگات خدمات حرفه‌ای ترجمه را مطابق با روال‌های رسمی به افراد و شرکت‌ها ارائه می‌دهیم. از طریق خدمات آنلاین نیز سراسر ترکیه را پوشش می‌دهیم.",
+    points:["پشتیبانی مترجم رسمی","هماهنگی با دفتر اسناد رسمی","حفظ محرمانگی و امنیت","دریافت آنلاین و ارسال پستی"],
+    serviceEyebrow:"خدمات ما",serviceTitle:"چه مدارکی ترجمه می‌کنیم؟",services:[["ترجمه رسمی و محضری","مدارک تحصیلی، گذرنامه، کارت هویت و اسناد ثبت احوال."],["ترجمه حقوقی","احکام دادگاه، قراردادها، وکالت‌نامه‌ها و اسناد حقوقی."],["ترجمه دانشگاهی","پایان‌نامه، مقاله، ریزنمرات و انتشارات علمی."],["تجاری و مالی","اسناد شرکت، صورت‌های مالی و مکاتبات تجاری."],["ترجمه پزشکی","گزارش‌های پزشکی، خلاصه پرونده و مدارک درمانی."],["ترجمه شفاهی","همراهی در دفتر اسناد، دادگاه و جلسات کاری."]],
+    notaryEyebrow:"راهنمای ترجمه محضری",notaryTitle:"مراحل ترجمه در دفتر اسناد رسمی",notaryHead:"دفتر اسناد رسمی اول یوزگات",notaryText:"دفتر اسناد رسمی دارای سابقه سوگند مترجم نزدیک دفتر ماست. در صورت نیاز مراحل تأیید را توضیح می‌دهیم.",common:"مدارک متداول برای تأیید",documents:["قراردادها و تعهدات","وکالت‌نامه و رضایت‌نامه","مدارک و ریزنمرات","گذرنامه و هویت","ابلاغیه‌های رسمی","اسناد ارث و دادگاه"],
+    onlineBadge:"نیازی به مراجعه حضوری نیست",onlineTitle:"آنلاین بفرستید و در نشانی خود تحویل بگیرید",onlineText:"مدرک را ایمیل کنید؛ پس از تأیید هزینه، زمان تحویل و نیاز به تأیید محضری کار را آغاز می‌کنیم.",steps:[["مدرک را آماده کنید","عکس واضح بگیرید یا PDF اسکن کنید."],["ایمیل کنید","به نشانی رسمی ما ارسال کنید."],["قیمت را تأیید کنید","هزینه و زمان تحویل را تأیید کنید."],["تحویل بگیرید","نسخه دیجیتال یا اصل تأییدشده را دریافت کنید."]],
+    contactEyebrow:"تماس با ما",contactTitle:"دفتر و راه‌های ارتباطی",contactHead:"اطلاعات تماس",address:"نشانی دفتر",phone:"تلفن",email:"ایمیل",hours:"ساعات کاری",map:"موقعیت ما"
   }
 };
 
@@ -120,7 +153,7 @@ function SectionTitle({ eyebrow, title }) {
 
 export default function HomePage({ locale = "tr" }) {
   const t = copy[locale];
-  const ar = locale === "ar";
+  const ar = locale === "ar" || locale === "fa";
   const [slide, setSlide] = useState(0);
   useEffect(() => { const timer = setInterval(() => setSlide(v => (v + 1) % 2), 5000); return () => clearInterval(timer); }, []);
   const icons = ["🖋️", "⚖️", "🎓", "💼", "🩺", "🗣️"];
