@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const labels = {
   tr: {
@@ -59,8 +60,14 @@ export default function Header({ locale = "tr" }) {
     <header className="main-header">
       <div className="container header-container">
         <Link className="logo" href="/" title="Yozgat Yeminli Tercüman ana sayfa">
-          <span className="logo-icon">⚖</span>
-          <span className="logo-text"><strong>YOZGAT YEMİNLİ</strong><small>TERCÜMAN · TRANSLATOR · مترجم</small></span>
+          <Image
+            className="brand-logo"
+            src="/images/yozgat-yeminli-tercuman-logo.png"
+            alt="Yozgat Yeminli Tercüman"
+            width={480}
+            height={240}
+            priority
+          />
         </Link>
         <button className="hamburger-menu" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="main-menu" aria-label={t.menu}><span/><span/><span/></button>
         <nav id="main-menu" className={`nav-menu${open ? " active" : ""}`} aria-label="Main navigation">
