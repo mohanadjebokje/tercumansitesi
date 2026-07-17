@@ -58,7 +58,7 @@ export default function Header({ locale = "tr" }) {
     </div>
     <header className="main-header">
       <div className="container header-container">
-        <Link className="logo" href={base}>
+        <Link className="logo" href="/" title="Yozgat Yeminli Tercüman ana sayfa">
           <span className="logo-icon">⚖</span>
           <span className="logo-text"><strong>YOZGAT YEMİNLİ</strong><small>TERCÜMAN · TRANSLATOR · مترجم</small></span>
         </Link>

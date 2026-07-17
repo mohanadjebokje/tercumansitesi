@@ -153,27 +153,34 @@ function SectionTitle({ eyebrow, title }) {
 
 export default function HomePage({ locale = "tr" }) {
   const t = copy[locale];
-  const ar = locale === "ar" || locale === "fa";
+  const rtl = locale === "ar" || locale === "fa";
   const [slide, setSlide] = useState(0);
-  useEffect(() => { const timer = setInterval(() => setSlide(v => (v + 1) % 2), 5000); return () => clearInterval(timer); }, []);
+  const flags = { tr:"🇹🇷", en:"🇬🇧", ar:"🇸🇦", de:"🇩🇪", fr:"🇫🇷", fa:"🇮🇷" };
+  const thirdAlt = {tr:"Yozgat Çamlık doğa manzarası",en:"Nature in Yozgat Çamlık",ar:"منظر طبيعي في يوزغات",de:"Natur im Yozgat Çamlık",fr:"Paysage naturel de Yozgat",fa:"طبیعت چاملیک یوزگات"}[locale];
+  const slides = [
+    ["/images/camlik1.jpg", t.visual[0]],
+    ["/images/saat-kulesi.jpg", t.visual[1]],
+    ["/images/camlik2.jpg", thirdAlt]
+  ];
+  useEffect(() => { const timer = setInterval(() => setSlide(v => (v + 1) % slides.length), 5000); return () => clearInterval(timer); }, [slides.length]);
   const icons = ["🖋️", "⚖️", "🎓", "💼", "🩺", "🗣️"];
 
-  return <div dir={ar ? "rtl" : "ltr"} className={ar ? "locale-ar" : undefined}>
+  return <div dir={rtl ? "rtl" : "ltr"} className={`locale-${locale}${rtl ? " locale-rtl" : ""}`}>
     <Header locale={locale}/>
     <main>
       <section className="main-slider-section" aria-label={locale === "tr" ? "Yozgat görselleri" : "Images of Yozgat"}>
         <div className="hero-slider" style={{transform:`translateX(-${slide * 100}%)`}}>
-          <div className="hero-slide"><Image src="/images/camlik1.jpg" alt={t.visual[0]} fill priority sizes="100vw"/></div>
-          <div className="hero-slide"><Image src="/images/saat-kulesi.jpg" alt={t.visual[1]} fill priority sizes="100vw"/></div>
+          {slides.map(([src,alt],index)=><div className="hero-slide" key={src}><Image src={src} alt={alt} fill priority={index===0} sizes="100vw"/></div>)}
         </div>
-        <button className="slider-btn prev-btn" onClick={() => setSlide((slide + 1) % 2)} aria-label="Previous">‹</button>
-        <button className="slider-btn next-btn" onClick={() => setSlide((slide + 1) % 2)} aria-label="Next">›</button>
+        <button className="slider-btn prev-btn" onClick={() => setSlide((slide - 1 + slides.length) % slides.length)} aria-label="Previous">‹</button>
+        <button className="slider-btn next-btn" onClick={() => setSlide((slide + 1) % slides.length)} aria-label="Next">›</button>
       </section>
 
       <section id="home" className="hero-section">
+        <span className="locale-flag" aria-hidden="true">{flags[locale]}</span>
         <div className="container hero-container">
           <div className="hero-content">
-            <div className="hero-badges"><span>⭐ {t.badge}</span><span>📍 {t.location}: {t.visual[slide]}</span></div>
+            <div className="hero-badges"><span>⭐ {t.badge}</span><span>📍 {t.location}: {slides[slide][1]}</span></div>
             <h1>{t.heroTitle}</h1><p>{t.heroText}</p>
             <div className="hero-buttons"><a className="btn btn-primary" href="#online-support">{t.send}</a><a className="btn btn-secondary" href="#contact">{t.office}</a></div>
           </div>
@@ -181,11 +188,11 @@ export default function HomePage({ locale = "tr" }) {
         </div>
       </section>
 
-      <section id="about" className="about-section"><div className="container"><SectionTitle eyebrow={t.aboutEyebrow} title={t.aboutTitle}/><div className="about-grid"><div className="about-text"><h3>{t.aboutHead}</h3><p>{t.aboutText}</p><ul className="about-features">{t.points.map(x=><li key={x}>✅ {x}</li>)}</ul></div><div className="about-stats"><div><strong>15+</strong><span>{ar?"لغة مدعومة":locale==="tr"?"Desteklenen Dil":"Languages"}</span></div><div><strong>10K+</strong><span>{ar?"وثيقة مترجمة":locale==="tr"?"Çevrilen Belge":"Documents"}</span></div><div><strong>5.0 / 5</strong><span>Google</span></div><div><strong>Online</strong><span>{ar?"في جميع أنحاء تركيا":locale==="tr"?"Türkiye Geneli":"Across Türkiye"}</span></div></div></div></div></section>
+      <section id="about" className="about-section"><div className="container"><SectionTitle eyebrow={t.aboutEyebrow} title={t.aboutTitle}/><div className="about-grid"><div className="about-text"><h3>{t.aboutHead}</h3><p>{t.aboutText}</p><ul className="about-features">{t.points.map(x=><li key={x}>✅ {x}</li>)}</ul></div><div className="about-stats"><div><strong>15+</strong><span>{locale==="ar"?"لغة مدعومة":locale==="fa"?"زبان پشتیبانی‌شده":locale==="tr"?"Desteklenen Dil":"Languages"}</span></div><div><strong>10K+</strong><span>{locale==="ar"?"وثيقة مترجمة":locale==="fa"?"مدرک ترجمه‌شده":locale==="tr"?"Çevrilen Belge":"Documents"}</span></div><div><strong>5.0 / 5</strong><span>Google</span></div><div><strong>Online</strong><span>{locale==="ar"?"في جميع أنحاء تركيا":locale==="fa"?"سراسر ترکیه":locale==="tr"?"Türkiye Geneli":"Across Türkiye"}</span></div></div></div></div></section>
 
       <section id="services" className="services-section"><div className="container"><SectionTitle eyebrow={t.serviceEyebrow} title={t.serviceTitle}/><div className="services-grid">{t.services.map(([title,text],i)=><article className="service-card" key={title}><span className="service-icon">{icons[i]}</span><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
 
-      <section id="notary-info" className="notary-section"><div className="container"><SectionTitle eyebrow={t.notaryEyebrow} title={t.notaryTitle}/><div className="notary-grid"><article className="notary-address-card"><span className="notary-badge">✅ {ar?"سجل مترجم محلف":locale==="tr"?"Yetkili Yemin Zaptı":"Sworn Translator Record"}</span><h3>{t.notaryHead}</h3><p>{t.notaryText}</p><address>Aşağınohutlu Mahallesi, Emniyet Caddesi, Yozgat Belediyesi Hal ve İş Merkezi K:2 No:3/9-10, Merkez / Yozgat</address></article><article className="notary-list-card"><h3>{t.common}</h3><div className="notary-topics">{t.documents.map((x,i)=><div key={x}><b>{icons[i]} {x}</b><p>{ar?"تُحدد المتطلبات وفق غرض الوثيقة والجهة التي ستُقدم إليها.":locale==="tr"?"Belgenin kullanım amacı ve teslim edileceği kuruma göre süreç önceden netleştirilir.":"Requirements are confirmed according to the document’s purpose and receiving authority."}</p></div>)}</div></article></div></div></section>
+      <section id="notary-info" className="notary-section"><div className="container"><SectionTitle eyebrow={t.notaryEyebrow} title={t.notaryTitle}/><div className="notary-grid"><article className="notary-address-card"><span className="notary-badge">✅ {locale==="ar"?"سجل مترجم محلف":locale==="fa"?"سابقه مترجم رسمی":locale==="tr"?"Yetkili Yemin Zaptı":"Sworn Translator Record"}</span><h3>{t.notaryHead}</h3><p>{t.notaryText}</p><address>Aşağınohutlu Mahallesi, Emniyet Caddesi, Yozgat Belediyesi Hal ve İş Merkezi K:2 No:3/9-10, Merkez / Yozgat</address></article><article className="notary-list-card"><h3>{t.common}</h3><div className="notary-topics">{t.documents.map((x,i)=><div key={x}><b>{icons[i]} {x}</b><p>{locale==="ar"?"تُحدد المتطلبات وفق غرض الوثيقة والجهة التي ستُقدم إليها.":locale==="fa"?"الزامات بر اساس هدف مدرک و مرجع دریافت‌کننده مشخص می‌شود.":locale==="tr"?"Belgenin kullanım amacı ve teslim edileceği kuruma göre süreç önceden netleştirilir.":"Requirements are confirmed according to the document’s purpose and receiving authority."}</p></div>)}</div></article></div></div></section>
 
       <section id="online-support" className="online-section"><div className="container online-wrapper"><div className="online-content"><span className="online-badge">{t.onlineBadge}</span><h2>{t.onlineTitle}</h2><p>{t.onlineText}</p><div className="steps-container">{t.steps.map(([title,text],i)=><div className="step-item" key={title}><b>{i+1}</b><div><h3>{title}</h3><p>{text}</p></div></div>)}</div></div><QuoteForm locale={locale}/></div></section>
 
