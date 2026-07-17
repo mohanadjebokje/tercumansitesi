@@ -7,7 +7,10 @@ export const metadata = {
   title: { default: "Yozgat Yeminli Tercüman | Noter Onaylı Çeviri", template: "%s | Yozgat Yeminli Tercüman" },
   description: "Yozgat'ta yeminli tercüman, noter onaylı tercüme ve online belge çevirisi. Resmi, hukuki, akademik ve teknik çeviri hizmetleri.",
   keywords: ["Yozgat yeminli tercüman", "Yozgat tercüme bürosu", "noter onaylı tercüme", "online tercüme Yozgat"],
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    languages: { "tr-TR": "/", "en": "/en" }
+  },
   openGraph: {
     type: "website", locale: "tr_TR", url: siteUrl,
     siteName: "Yozgat Yeminli Tercüman",
