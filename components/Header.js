@@ -12,15 +12,19 @@ const labels = {
   en: {
     home: "Home", about: "About Us", services: "Services",
     notary: "Notary Services", online: "Online Support", contact: "Contact & Location",
-    support: "WhatsApp Live Support", menu: "Open or close menu", language: "Türkçe"
+    support: "WhatsApp Live Support", menu: "Open or close menu"
+  },
+  ar: {
+    home: "الرئيسية", about: "من نحن", services: "خدماتنا",
+    notary: "خدمات الكاتب بالعدل", online: "الترجمة عن بُعد", contact: "التواصل والموقع",
+    support: "دعم مباشر عبر واتساب", menu: "فتح أو إغلاق القائمة"
   }
 };
 
 export default function Header({ locale = "tr" }) {
   const [open, setOpen] = useState(false);
   const t = labels[locale];
-  const base = locale === "en" ? "/en" : "/";
-  const otherLocale = locale === "en" ? "/" : "/en";
+  const base = locale === "en" ? "/en" : locale === "ar" ? "/ar" : "/";
   const links = [
     [t.about, "about"], [t.services, "services"], [t.notary, "notary-info"],
     [t.online, "online-support"], [t.contact, "contact"]
@@ -47,7 +51,11 @@ export default function Header({ locale = "tr" }) {
         <nav id="main-menu" className={`nav-menu${open ? " active" : ""}`} aria-label="Main navigation">
           <Link href={base} onClick={() => setOpen(false)}>{t.home}</Link>
           {links.map(([label, id]) => <Link key={id} href={`${base}#${id}`} onClick={() => setOpen(false)}>{label}</Link>)}
-          <Link className="language-toggle" href={otherLocale} hrefLang={locale === "en" ? "tr" : "en"}>🌐 {t.language}</Link>
+          <span className="language-switcher" aria-label="Language">
+            <Link className={locale === "tr" ? "selected" : ""} href="/" hrefLang="tr">TR</Link>
+            <Link className={locale === "en" ? "selected" : ""} href="/en" hrefLang="en">EN</Link>
+            <Link className={locale === "ar" ? "selected" : ""} href="/ar" hrefLang="ar">AR</Link>
+          </span>
         </nav>
       </div>
     </header>

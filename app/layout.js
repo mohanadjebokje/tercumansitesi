@@ -9,7 +9,7 @@ export const metadata = {
   keywords: ["Yozgat yeminli tercüman", "Yozgat tercüme bürosu", "noter onaylı tercüme", "online tercüme Yozgat"],
   alternates: {
     canonical: "/",
-    languages: { "tr-TR": "/", "en": "/en" }
+    languages: { "tr-TR": "/", "en": "/en", "ar": "/ar" }
   },
   openGraph: {
     type: "website", locale: "tr_TR", url: siteUrl,
