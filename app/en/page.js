@@ -1,7 +1,7 @@
 import HomePage from "@/components/HomePage";
 
 export const metadata = {
-  title: "Sworn Translator in Yozgat | Notarized Translation",
+  title: "Yozgat Yeminli Tercüman | Sworn & Notarized Translation",
   description: "Professional sworn and notarized translation services in Yozgat. Legal, academic, medical and official document translation with online support.",
   alternates: {
     canonical: "/en",
@@ -9,7 +9,7 @@ export const metadata = {
   },
   openGraph: {
     locale: "en_US",
-    title: "Sworn Translator in Yozgat",
+    title: "Yozgat Yeminli Tercüman",
     description: "Reliable sworn and notarized translation services in Yozgat.",
     url: "/en"
   }

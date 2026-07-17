@@ -1,7 +1,7 @@
 import HomePage from "@/components/HomePage";
 
 export const metadata = {
-  title: "مترجم محلف في يوزغات | ترجمة موثقة",
+  title: "Yozgat Yeminli Tercüman | ترجمة محلفة وموثقة",
   description: "خدمات ترجمة محلفة وموثقة احترافية في يوزغات للوثائق القانونية والأكاديمية والطبية والرسمية مع دعم إلكتروني.",
   alternates: {
     canonical: "/ar",
@@ -9,7 +9,7 @@ export const metadata = {
   },
   openGraph: {
     locale: "ar_AR",
-    title: "مترجم محلف في يوزغات",
+    title: "Yozgat Yeminli Tercüman",
     description: "خدمات ترجمة محلفة وموثقة موثوقة في يوزغات.",
     url: "/ar"
   }
