@@ -1,0 +1,1575 @@
+/* ==========================================================================
+   YOZGAT YEMİNLİ TERCÜME BÜROSU - STİL DOSYASI
+   ========================================================================== */
+
+/* Değişkenler ve Renk Paleti */
+:root {
+    --primary-color: #0b1e3f;     /* Kurumsal Koyu Lacivert */
+    --secondary-color: #c5a880;   /* Şık Vurgu Altın Sarısı */
+    --secondary-hover: #b09168;   /* Koyu Altın Sarısı */
+    --dark-color: #1b2a4a;        /* Derin Lacivert */
+    --light-color: #f8fafc;       /* Açık Gri/Beyaz */
+    --text-color: #334155;        /* Koyu Gri Gövde Yazısı */
+    --text-light: #64748b;       /* Açık Gri Yardımcı Yazı */
+    --white: #ffffff;
+    --success: #10b981;
+    --whatsapp-green: #25d366;
+    --whatsapp-hover: #20ba5a;
+    
+    /* Font Aileleri */
+    --font-primary: 'Inter', sans-serif;
+    --font-heading: 'Montserrat', sans-serif;
+    
+    /* Gölgeler ve Yuvarlatmalar */
+    --shadow-sm: 0 2px 4px rgba(11, 30, 63, 0.04);
+    --shadow-md: 0 10px 20px rgba(11, 30, 63, 0.08);
+    --shadow-lg: 0 20px 40px rgba(11, 30, 63, 0.12);
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 24px;
+    
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Sıfırlama (Reset) ve Temel Ayarlar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--text-color);
+    background-color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+input, select, textarea {
+    font-family: var(--font-primary);
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: var(--radius-sm);
+    outline: none;
+    transition: var(--transition);
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(11, 30, 63, 0.1);
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Ortak Buton Tasarımları */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 28px;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(197, 168, 128, 0.3);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.btn-secondary:hover {
+    background-color: var(--white);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.btn-whatsapp-cta {
+    background-color: var(--whatsapp-green);
+    color: var(--white);
+    font-size: 16px;
+    width: 100%;
+}
+
+.btn-whatsapp-cta:hover {
+    background-color: var(--whatsapp-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background-color: rgba(197, 168, 128, 0.15);
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    margin-bottom: 15px;
+}
+
+.badge-accent {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--secondary-color);
+}
+
+/* Bölüm Başlıkları */
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title span {
+    color: var(--secondary-color);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.section-title h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.section-title .line {
+    width: 60px;
+    height: 4px;
+    background-color: var(--secondary-color);
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+/* ==========================================================================
+   1. ÜST BAR (Top Bar)
+   ========================================================================== */
+.top-bar {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 10px 0;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.top-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.top-bar-info {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.top-bar-info span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.top-bar-info a:hover {
+    color: var(--secondary-color);
+}
+
+.top-bar-social {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.top-bar-social a {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.top-bar-social a:hover {
+    color: var(--secondary-color);
+}
+
+.whatsapp-top {
+    background-color: var(--whatsapp-green);
+    color: var(--white) !important;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+}
+
+.whatsapp-top:hover {
+    background-color: var(--whatsapp-hover) !important;
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   2. NAVİGASYON (Header)
+   ========================================================================== */
+.main-header {
+    background-color: var(--white);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 15px 0;
+    transition: var(--transition);
+}
+
+.main-header.scrolled {
+    padding: 10px 0;
+    box-shadow: var(--shadow-md);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    font-size: 28px;
+    color: var(--secondary-color);
+    background-color: rgba(197, 168, 128, 0.1);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(197, 168, 128, 0.2);
+}
+
+.logo-text h1 {
+    font-size: 18px;
+    line-height: 1.1;
+    letter-spacing: 0.5px;
+}
+
+.logo-text span {
+    font-size: 11px;
+    color: var(--text-light);
+    font-weight: 600;
+    letter-spacing: 2px;
+    display: block;
+}
+
+.logo-title-white {
+    color: var(--white);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.logo-subtitle-gold {
+    color: var(--secondary-color);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    display: block;
+}
+
+/* Menü Linkleri */
+.nav-menu ul {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-link {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-color);
+    padding: 8px 0;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--secondary-color);
+    transition: var(--transition);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--secondary-color);
+}
+
+/* Hamburger Menü (Mobil) */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+/* ==========================================================================
+   3. KAHRAMAN BÖLÜMÜ (Hero Section)
+   ========================================================================== */
+.hero-section {
+    position: relative;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 100px 0 160px;
+    overflow: hidden;
+}
+
+.text-only-hero {
+    padding: 60px 0 100px !important;
+}
+
+.text-only-hero::after {
+    display: none;
+}
+
+.text-only-hero .hero-overlay {
+    display: none;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to top right, var(--white) 49%, transparent 50%);
+    z-index: 4;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.hero-content h2 {
+    color: var(--white);
+    font-size: 48px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 18px;
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Kahraman Kartları (Hero Features) */
+.hero-features {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    padding: 24px;
+    border-radius: var(--radius-md);
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(197, 168, 128, 0.3);
+    transform: translateX(-5px);
+}
+
+.feature-icon {
+    font-size: 24px;
+    color: var(--secondary-color);
+    background: rgba(197, 168, 128, 0.1);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+}
+
+.feature-card h3 {
+    color: var(--white);
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.feature-card p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   YENİ HERO ARKA PLAN SLAYT STİLLERİ
+   ========================================================================== */
+.main-slider-section {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background-color: var(--dark-color);
+}
+
+.hero-slider-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.hero-slider {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(11, 30, 63, 0.4);
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    transition: var(--transition);
+    backdrop-filter: blur(5px);
+    font-size: 20px;
+}
+
+.slider-btn:hover {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(11, 30, 63, 0.93) 0%, rgba(27, 42, 74, 0.8) 100%);
+    z-index: 2;
+}
+
+.hero-badges-wrapper {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.hero-badges-wrapper .badge {
+    margin-bottom: 0;
+}
+
+.badge-location {
+    background-color: rgba(197, 168, 128, 0.25) !important;
+    color: var(--secondary-color) !important;
+    border: 1px solid rgba(197, 168, 128, 0.4) !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   4. HAKKIMIZDA (About Section)
+   ========================================================================== */
+.about-section {
+    padding: 100px 0;
+    background-color: var(--white);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-text h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    font-size: 16px;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.about-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.about-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--primary-color);
+}
+
+.about-features i {
+    color: var(--secondary-color);
+    font-size: 16px;
+}
+
+/* İstatistik Kutuları */
+.about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.stat-box {
+    background-color: var(--light-color);
+    padding: 40px 20px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    border: 1px solid rgba(11, 30, 63, 0.05);
+    transition: var(--transition);
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    background-color: var(--white);
+    border-color: rgba(197, 168, 128, 0.2);
+}
+
+.stat-number {
+    font-family: var(--font-heading);
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--secondary-color);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   5. HİZMETLERİMİZ (Services Section)
+   ========================================================================== */
+.services-section {
+    padding: 100px 0;
+    background-color: var(--light-color);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.service-card {
+    background-color: var(--white);
+    padding: 40px 30px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(11, 30, 63, 0.03);
+    transition: var(--transition);
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(197, 168, 128, 0.2);
+}
+
+.service-icon {
+    font-size: 28px;
+    color: var(--secondary-color);
+    background-color: rgba(197, 168, 128, 0.08);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    margin-bottom: 25px;
+    transition: var(--transition);
+}
+
+.service-card:hover .service-icon {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.service-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.service-card p {
+    font-size: 15px;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   YOZGAT YEREL GORSELLER VE GUVEN BOLUMU
+   ========================================================================== */
+.heritage-section {
+    padding: 100px 0;
+    background-color: var(--white);
+}
+
+.heritage-intro {
+    max-width: 820px;
+    margin: -25px auto 40px;
+    text-align: center;
+}
+
+.heritage-intro p {
+    color: var(--text-light);
+    font-size: 16px;
+}
+
+.heritage-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.heritage-card {
+    background-color: var(--white);
+    border: 1px solid rgba(11, 30, 63, 0.08);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.heritage-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(197, 168, 128, 0.25);
+}
+
+.heritage-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+}
+
+.heritage-card-content {
+    padding: 24px;
+}
+
+.heritage-tag {
+    display: inline-block;
+    color: var(--secondary-color);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.heritage-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.heritage-card p {
+    color: var(--text-light);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.camlik-note {
+    margin-top: 36px;
+    padding: 28px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    background: linear-gradient(135deg, rgba(11, 30, 63, 0.96), rgba(27, 42, 74, 0.92));
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(197, 168, 128, 0.25);
+    box-shadow: var(--shadow-md);
+}
+
+.camlik-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-sm);
+    background-color: rgba(197, 168, 128, 0.12);
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.camlik-note h3 {
+    color: var(--white);
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.camlik-note p {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   6. İNTERNET DESTEĞİ / ONLINE ÇEVİRİ (Online Section)
+   ========================================================================== */
+.online-section {
+    padding: 100px 0;
+    background-color: var(--primary-color);
+    color: var(--white);
+    position: relative;
+}
+
+.online-wrapper {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.online-content h2 {
+    color: var(--white);
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.online-content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+
+/* Süreç Adımları (Steps) */
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.step-item {
+    display: flex;
+    gap: 20px;
+    position: relative;
+}
+
+.step-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 45px;
+    left: 20px;
+    width: 2px;
+    height: calc(100% - 15px);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--secondary-color);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid var(--secondary-color);
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.step-text h4 {
+    color: var(--white);
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.step-text p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+/* CTA Kartı */
+.online-cta-box {
+    background-color: var(--white);
+    color: var(--text-color);
+    padding: 40px 30px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.online-cta-box h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.online-cta-box p {
+    font-size: 14px;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.cta-form .form-group {
+    margin-bottom: 20px;
+}
+
+.cta-form label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--primary-color);
+}
+
+.honeypot-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.privacy-check {
+    display: flex !important;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 12px !important;
+    line-height: 1.45;
+    color: var(--text-light) !important;
+    margin: 0 0 18px !important;
+}
+
+.privacy-check input {
+    width: auto;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.privacy-check-dark {
+    color: var(--text-color) !important;
+}
+
+.alternative-send {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 13px;
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.alternative-send a {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.alternative-send a:hover {
+    color: var(--secondary-color);
+}
+
+/* ==========================================================================
+   Noter Bölümü Stilleri
+   ========================================================================== */
+.notary-section {
+    padding: 100px 0;
+    background-color: var(--white);
+}
+
+.notary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.notary-card {
+    background-color: var(--light-color);
+    padding: 40px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(11, 30, 63, 0.05);
+    box-shadow: var(--shadow-sm);
+}
+
+.notary-address-card {
+    border-top: 4px solid var(--secondary-color);
+    position: sticky;
+    top: 100px;
+}
+
+.notary-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+
+.notary-card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.notary-card p {
+    font-size: 15px;
+    color: var(--text-light);
+    margin-bottom: 25px;
+}
+
+.notary-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-top: 1px solid rgba(11, 30, 63, 0.1);
+    padding-top: 20px;
+}
+
+.notary-details p {
+    margin-bottom: 0;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.notary-details i {
+    color: var(--secondary-color);
+    margin-right: 6px;
+}
+
+.notary-note {
+    background-color: rgba(197, 168, 128, 0.08);
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--secondary-color);
+    font-size: 13px !important;
+}
+
+.notary-topics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.topic-item {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(11, 30, 63, 0.03);
+    transition: var(--transition);
+}
+
+.topic-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+    border-color: rgba(197, 168, 128, 0.15);
+}
+
+.topic-item h4 {
+    font-size: 15px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary-color);
+}
+
+.topic-item i {
+    color: var(--secondary-color);
+}
+
+.topic-item p {
+    font-size: 13px;
+    margin-bottom: 0;
+    line-height: 1.5;
+    color: var(--text-light);
+}
+
+@media (max-width: 992px) {
+    .notary-grid {
+        grid-template-columns: 1fr;
+    }
+    .notary-address-card {
+        position: static;
+    }
+}
+
+@media (max-width: 576px) {
+    .notary-topics {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+   7. İLETİŞİM & KONUM (Contact Section)
+   ========================================================================== */
+.contact-section {
+    padding: 100px 0;
+    background-color: var(--white);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    margin-bottom: 60px;
+}
+
+.contact-info h3 {
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.contact-info p {
+    color: var(--text-light);
+    font-size: 15px;
+    margin-bottom: 35px;
+}
+
+/* İletişim Detayları */
+.info-details {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.info-item {
+    display: flex;
+    gap: 15px;
+}
+
+.info-icon {
+    font-size: 20px;
+    color: var(--secondary-color);
+    background-color: rgba(197, 168, 128, 0.08);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+}
+
+.info-text h4 {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.info-text p {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+.info-text a:hover {
+    color: var(--secondary-color);
+}
+
+/* Mesaj Gönderim Formu */
+.contact-form-wrapper {
+    background-color: var(--light-color);
+    padding: 40px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(11, 30, 63, 0.05);
+}
+
+.contact-form-wrapper h3 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.contact-form-wrapper p {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 25px;
+}
+
+.contact-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.contact-form .form-group {
+    margin-bottom: 18px;
+}
+
+.contact-form label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.form-status {
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.form-status.success {
+    color: var(--success);
+}
+
+.form-status.error {
+    color: red;
+}
+
+/* Konum Haritası */
+.map-container {
+    margin-top: 50px;
+}
+
+.map-container h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.map-wrapper {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(11, 30, 63, 0.1);
+}
+
+.security-strip {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.security-item {
+    background-color: var(--light-color);
+    border: 1px solid rgba(11, 30, 63, 0.06);
+    border-radius: var(--radius-md);
+    padding: 22px;
+    display: grid;
+    gap: 8px;
+}
+
+.security-item i {
+    color: var(--secondary-color);
+    font-size: 24px;
+}
+
+.security-item strong {
+    color: var(--primary-color);
+    font-family: var(--font-heading);
+    font-size: 15px;
+}
+
+.security-item span {
+    color: var(--text-light);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   8. FOOTER (Alt Bilgi)
+   ========================================================================== */
+.main-footer {
+    background-color: var(--primary-color);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 80px 0 0;
+    font-size: 14px;
+    border-top: 3px solid var(--secondary-color);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.footer-about p {
+    margin: 20px 0;
+    line-height: 1.6;
+}
+
+.social-icons {
+    display: flex;
+    gap: 12px;
+}
+
+.social-icons a {
+    width: 36px;
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.social-icons a:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.footer-grid h3 {
+    color: var(--white);
+    font-size: 16px;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-grid h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--secondary-color);
+}
+
+.footer-links ul, .footer-services ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links a:hover, .footer-services a:hover {
+    color: var(--secondary-color);
+    padding-left: 5px;
+}
+
+.footer-contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.footer-contact-info i {
+    color: var(--secondary-color);
+}
+
+.footer-bottom {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 12px;
+}
+
+.footer-bottom-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* ==========================================================================
+   9. SABİT WHATSAPP BUTONU
+   ========================================================================== */
+.fixed-whatsapp {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--whatsapp-green);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    transition: var(--transition);
+    animation: pulse 2s infinite;
+}
+
+.fixed-whatsapp:hover {
+    background-color: var(--whatsapp-hover);
+    transform: scale(1.1);
+}
+
+.whatsapp-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: var(--white);
+    font-size: 9px;
+    font-weight: 700;
+    padding: 3px 6px;
+    border-radius: 50px;
+    text-transform: uppercase;
+}
+
+/* Nabız (Pulse) Animasyonu */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+/* ==========================================================================
+   10. SCROLL ANİMASYONLARI (JS ile Tetiklenir)
+   ========================================================================== */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   11. MOBİL UYUMLULUK (Responsive Design)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .hero-content h2 {
+        font-size: 38px;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .online-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .heritage-grid,
+    .security-strip {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-bar-info {
+        justify-content: center;
+    }
+    
+    .top-bar-social {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .hamburger-menu {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        box-shadow: var(--shadow-md);
+        padding: 20px;
+        display: none;
+        border-top: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .nav-menu.active {
+        display: block;
+    }
+    
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-form .form-row {
+        grid-template-columns: 1fr;
+    }
+}
