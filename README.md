@@ -122,9 +122,6 @@ tamamlayın; sonra `APPOINTMENT_PRIVACY_READY=true` yapın. Varsayılan producti
 
 Testler: `node --test tests/appointments.test.mjs` ve `node tests/appointments-browser.cjs`.
 Browser testi development sunucusuna ve yalnızca sentetik müşteri verilerine yöneliktir.
-# Teklif formunda isteğe bağlı randevu
+# Teklif formunda randevu e-posta talebi
 
-Belge/fotoğraf yükleme zorunlu değildir. Dosya yoksa S3 kullanılmadan, mevcut SMTP ve Redis kontrolleriyle teklif gönderilir. Dosya eklendiğinde mevcut özel depolama, tür ve 5 MB doğrulaması korunur.
-
-"Teklif ile birlikte randevu da almak istiyorum" alanı varsayılan olarak kapalıdır. Açıldığında ad, telefon, tarih ve gerçek müsait saat bilgileri alınır. Teklif başarılı gönderildikten sonra aynı veritabanı rezervasyon kuralları uygulanır. Randevu bildiriminin açıklamasında teklif referansı yer alır. SMTP ile veritabanı arasında ortak transaction yoktur: teklif gönderilip saat dolarsa kullanıcıya kısmi başarı gösterilir; yeniden deneme yalnızca randevu oluşturur. Gerçek SMTP yapılandırılmadan teklif veya birleşik gönderim başarı olarak gösterilmez.
-
+Teklif formundaki tarih ve saat seçimi sadece e-postayla ofise bildirilir. Veritabanına randevu kaydedilmez, saatler bloke edilmez. Ofis ayrıca onaylar. /api/appointments/availability?mode=email çalışma takvimine göre saatleri veritabanı olmadan listeler. /api/quotes seçilen tarih, 20 dakikalık aralık, ad ve telefonu doğrular ve teklif e-postasına ekler. Belge isteğe bağlıdır. SMTP ve mevcut güvenlik ayarları gereklidir. Ayrı /randevu sayfasının eski rezervasyon altyapısı bundan bağımsızdır.

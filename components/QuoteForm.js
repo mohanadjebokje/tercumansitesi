@@ -16,7 +16,6 @@ export default function QuoteForm({ locale = 'tr' }) {
   const [slots, setSlots] = useState([]);
   const [slotState, setSlotState] = useState('');
   const [appointment, setAppointment] = useState(null);
-  const [quoteReference, setQuoteReference] = useState('');
   const bookingKey = useRef(null);
   const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Istanbul', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
   useEffect(() => {
@@ -26,7 +25,7 @@ export default function QuoteForm({ locale = 'tr' }) {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 15000);
     setSlotState('loading');
-    fetch(`/api/appointments/availability?date=${date}`, { cache: 'no-store', signal: controller.signal })
+    fetch(`/api/appointments/availability?mode=email&date=${date}`, { cache: 'no-store', signal: controller.signal })
       .then(async response => { const data = await response.json(); if (!response.ok) throw new Error(); if (active) { setSlots(data.slots); setSlotState(data.slots.length ? '' : 'empty'); } })
       .catch(() => { if (active) setSlotState('error'); })
       .finally(() => clearTimeout(timeout));
@@ -62,9 +61,6 @@ export default function QuoteForm({ locale = 'tr' }) {
       const booking = withAppointment ? { fullName: values.get('fullName'), phone: values.get('phone'), date, time, bookingKey: bookingKey.current } : undefined;
       setStatus({ kind: 'busy', code: 'sending' });
       let result;
-      if (quoteReference) {
-        result = await request('/api/appointments', { ...booking, email: data.email, privacy: data.privacy, service: data.service, notes: `Teklif referansı: ${quoteReference}`, website: values.get('website') });
-      } else {
       setStatus({ kind: 'busy', code: 'uploading' });
       let token;
       if (file) {
@@ -78,17 +74,11 @@ export default function QuoteForm({ locale = 'tr' }) {
       }
       setStatus({ kind: 'busy', code: 'sending' });
       result = await request('/api/quotes', { ...data, token, appointment: booking, website: values.get('website') });
-      if (result.appointmentError) {
-        setQuoteReference(result.reference);
-        setStatus({ kind: 'partial', code: result.appointmentError });
-        return;
-      }
-      }
-      setAppointment(result.appointment || null);
-      setQuoteReference(''); bookingKey.current = null;
+      setAppointment(result.appointmentRequest || null);
+      bookingKey.current = null;
       setStatus({ kind: 'success', code: '' });
       form.reset(); setFile(null); setWithAppointment(false); setDate(''); setSelection({ source: '', target: '', document: '', service: 'sworn', pages: '1' });
-    } catch (error) { setStatus({ kind: quoteReference ? 'partial' : 'error', code: error.code || 'failed' }); }
+    } catch (error) { setStatus({ kind: 'error', code: error.code || 'failed' }); }
   }
   return <form className="online-cta-box quote-form" onSubmit={submit} aria-busy={busy}>
     <div className="quote-heading"><h3>{t.title}</h3><p>{t.intro}</p></div>
@@ -99,8 +89,8 @@ export default function QuoteForm({ locale = 'tr' }) {
       <label>{t.pages}<select name="pages" required value={selection.pages} onChange={change}>{Array.from({ length: 20 }, (_, i) => <option key={i + 1} value={i + 1}>{i + 1}</option>)}<option value="20+">20+</option></select></label></div>
       <fieldset className="quote-notary"><legend>{t.service}</legend><div>{SERVICES.map((value, i) => <label key={value}><input name="service" type="radio" value={value} checked={selection.service === value} onChange={change}/><span>{t.services[i]}</span></label>)}</div></fieldset>
       <div className="quote-upload"><label htmlFor={`quote-file-${locale}`}>{t.upload} <small>(isteğe bağlı)</small><span className="quote-file-hint">{t.fileHint} Belge veya fotoğraf yüklemek zorunlu değildir.</span><input ref={fileInput} id={`quote-file-${locale}`} name="file" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" onChange={chooseFile}/></label>{file && <div className="quote-file-info"><span>{file.name} · {(file.size / 1024 / 1024).toFixed(2)} MB</span><button type="button" onClick={() => { setFile(null); fileInput.current.value = ''; }}>{t.remove}</button></div>}</div>
-      <label className="privacy-check"><input type="checkbox" checked={withAppointment} disabled={Boolean(quoteReference)} onChange={event => { setWithAppointment(event.target.checked); bookingKey.current = null; }}/><span>Teklif ile birlikte randevu da almak istiyorum <small>(isteğe bağlı)</small></span></label>
-      {withAppointment && <fieldset className="quote-appointment"><legend>20 dakikalık ofis randevusu</legend>
+      <label className="privacy-check"><input type="checkbox" checked={withAppointment} onChange={event => { setWithAppointment(event.target.checked); bookingKey.current = null; }}/><span>Teklif ile birlikte randevu da almak istiyorum <small>(isteğe bağlı)</small></span></label>
+      {withAppointment && <fieldset className="quote-appointment"><legend>20 dakikalık görüşme talebi</legend><p>Seçiminiz e-posta ile iletilir. Saat ayrılmaz; ofis ayrıca onaylar.</p>
         <div className="form-row"><label>Ad ve soyad<input name="fullName" required minLength={3} maxLength={100} autoComplete="name" onChange={() => { bookingKey.current = null; }}/></label><label>Telefon / WhatsApp<input name="phone" type="tel" required maxLength={25} autoComplete="tel" onChange={() => { bookingKey.current = null; }}/></label></div>
         <label>Randevu tarihi<input type="date" required min={today} value={date} onChange={event => { setDate(event.target.value); bookingKey.current = null; }}/></label>
         <fieldset className="appointment-slots"><legend>Uygun saat · Türkiye saati</legend>
@@ -116,8 +106,8 @@ export default function QuoteForm({ locale = 'tr' }) {
       <label className="privacy-check"><input type="checkbox" name="privacy" required/><span><a href="/kvkk-aydinlatma-metni" target="_blank" rel="noopener noreferrer">{t.privacy}</a></span></label>
       <p className="quote-privacy-note">{t.notice} <a href="/gizlilik-politikasi" target="_blank" rel="noopener noreferrer">{t.policy}</a></p>
       <label className="quote-honeypot" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off"/></label>
-      <button className="btn btn-primary quote-submit" type="submit" disabled={withAppointment && (!time || slotState === 'loading')}>{busy ? t[status.code] : quoteReference ? 'Yalnızca randevuyu yeniden dene' : withAppointment ? 'Teklif Gönder ve Randevu Al' : t.send}<span aria-hidden="true"> →</span></button>
+      <button className="btn btn-primary quote-submit" type="submit" disabled={withAppointment && (!time || slotState === 'loading')}>{busy ? t[status.code] : withAppointment ? 'Teklif ve Randevu Talebi Gönder' : t.send}<span aria-hidden="true"> →</span></button>
     </fieldset>
-    {status.kind && <div className={`quote-status quote-status-${status.kind}`} role={['error', 'partial'].includes(status.kind) ? 'alert' : 'status'}>{status.kind === 'partial' ? `Fiyat teklifiniz gönderildi (${quoteReference}); randevu oluşturulamadı. Başka saat seçip randevuyu yeniden deneyin.` : status.kind === 'error' ? t.errors[status.code] || t.errors.failed : status.kind === 'success' ? t.success : t[status.code]}{appointment && status.kind === 'success' && <p>Randevunuz: {appointment.date} · {appointment.start}–{appointment.end} · Referans: {appointment.reference}</p>}{status.kind === 'error' && <a href="mailto:muhannedcamakci66@gmail.com">muhannedcamakci66@gmail.com</a>}</div>}
+    {status.kind && <div className={`quote-status quote-status-${status.kind}`} role={['error', 'partial'].includes(status.kind) ? 'alert' : 'status'}>{status.kind === 'error' ? t.errors[status.code] || t.errors.failed : status.kind === 'success' ? t.success : t[status.code]}{appointment && status.kind === 'success' && <p>Randevu talebiniz: {appointment.date} · {appointment.start}–{appointment.end} · Ofis onayı bekleniyor.</p>}{status.kind === 'error' && <a href="mailto:muhannedcamakci66@gmail.com">muhannedcamakci66@gmail.com</a>}</div>}
   </form>;
 }

@@ -67,7 +67,7 @@ const origin = process.env.QUOTE_TEST_ORIGIN || 'http://localhost:3000';
   let requests = [];
   await page.route('**/api/quotes', route => {
     const body = route.request().postDataJSON(); requests.push(body);
-    return route.fulfill({ contentType: 'application/json', body: JSON.stringify({ ok: true, reference: 'QUOTE-TEST', ...(body.appointment ? { appointmentError: 'taken' } : {}) }) });
+    return route.fulfill({ contentType: 'application/json', body: JSON.stringify({ ok: true, reference: 'QUOTE-TEST', ...(body.appointment ? { appointmentRequest: { date: 'Test date', start: '09:00', end: '09:20' } } : {}) }) });
   });
   async function fillQuote() {
     await form.locator('[name=file]').setInputFiles([]);
@@ -92,15 +92,11 @@ const origin = process.env.QUOTE_TEST_ORIGIN || 'http://localhost:3000';
   await form.locator('.appointment-slot-grid button:not(:disabled)').first().click();
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   await form.locator('button[type=submit]').click();
-  await form.locator('.quote-status-partial').waitFor();
+  await form.locator('.quote-status-success').waitFor();
   assert.equal(requests.length, 2);
   assert.equal(requests[1].appointment.fullName, 'Test Customer');
   assert(requests[1].appointment.time);
-  await page.route('**/api/appointments', route => route.fulfill({contentType:'application/json',body:JSON.stringify({ok:true,appointment:{reference:'RND-TEST',date:'Test date',start:'09:00',end:'09:20'}})}));
-  await form.locator('button[type=submit]').click();
-  await form.locator('.quote-status-success').waitFor();
-  assert.match(await form.locator('.quote-status-success').innerText(), /RND-TEST/);
-  assert.equal(requests.length, 2, 'Retry must not send the quote again');
-  console.log('PASS: optional file; quote-only; optional real availability; combined payload; partial failure; appointment-only retry. Email responses mocked.');
+  assert.match(await form.locator('.quote-status-success').innerText(), /09:00/);
+  console.log('PASS: optional document; quote-only; email-only appointment time selection and payload; no booking request. SMTP mocked.');
   await browser.close();
 })().catch(error => { console.error(error); process.exit(1); });
