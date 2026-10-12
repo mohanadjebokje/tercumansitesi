@@ -3,6 +3,18 @@ import { useEffect, useRef, useState } from 'react';
 import { estimateQuote } from '@/config/quote-pricing.mjs';
 import { DOCUMENTS, LANGUAGES, SERVICES, validateSelection, validateFileMetadata } from '@/lib/quote-validation.mjs';
 import { quoteCopy } from '@/lib/quote-copy.mjs';
+import { appointmentConfig } from '@/config/appointments.mjs';
+
+function firstRequestDay() {
+  const today = new Intl.DateTimeFormat('en-CA', { timeZone:'Europe/Istanbul', year:'numeric', month:'2-digit', day:'2-digit' }).format(new Date());
+  const day = new Date(`${today}T12:00:00Z`);
+  for (let i = 0; i < appointmentConfig.bookingHorizonDays; i++) {
+    day.setUTCDate(day.getUTCDate() + 1);
+    const date = day.toISOString().slice(0,10);
+    if ((appointmentConfig.week[day.getUTCDay() || 7] || []).length && !appointmentConfig.closedDates.includes(date)) return date;
+  }
+  return today;
+}
 
 export default function QuoteForm({ locale = 'tr' }) {
   const t = quoteCopy(locale);
@@ -19,8 +31,12 @@ export default function QuoteForm({ locale = 'tr' }) {
   const bookingKey = useRef(null);
   const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Istanbul', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
   useEffect(() => {
+    if (new URLSearchParams(window.location.search).get('randevu') === '1') setWithAppointment(true);
+  }, []);
+  useEffect(() => {
     setTime(''); setSlots([]);
-    if (!withAppointment || !date) { setSlotState(''); return; }
+    if (!withAppointment) { setSlotState(''); return; }
+    if (!date) { setDate(firstRequestDay()); return; }
     let active = true;
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 15000);
