@@ -73,6 +73,7 @@ export default function Header({ locale = "tr" }) {
         <nav id="main-menu" className={`nav-menu${open ? " active" : ""}`} aria-label="Main navigation">
           <Link href={base} onClick={() => setOpen(false)}>{t.home}</Link>
           {links.map(([label, id]) => <Link key={id} href={`${base}#${id}`} onClick={() => setOpen(false)}>{label}</Link>)}
+          <Link href="/randevu" onClick={() => setOpen(false)}>{({tr:"Randevu",en:"Appointment",ar:"????",de:"Termin",fr:"Rendez-vous",fa:"????"})[locale]}</Link>
           <span className="language-switcher" aria-label="Language">
             <Link className={locale === "tr" ? "selected" : ""} href="/" hrefLang="tr">TR</Link>
             <Link className={locale === "en" ? "selected" : ""} href="/en" hrefLang="en">EN</Link>
