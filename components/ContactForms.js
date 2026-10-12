@@ -3,7 +3,33 @@ import { useState } from "react";
 
 const clean = (value, length) => String(value || "").replace(/[<>]/g, "").trim().slice(0, length);
 
-export { default as QuoteForm } from "./QuoteForm";
+export function QuoteForm({ locale = "tr" }) {
+  const en = locale === "en";
+  const ar = locale === "ar";
+  const extras = {
+    de:["Übersetzungsangebot","Ausgangssprache","Zielsprache","Dokument","Jetzt Angebot erhalten","Dokument- und Zielsprache auswählen.","Dokumentsprache","Auswählen","Zielsprache","Dokumentart","Diplom, Reisepass, Vertrag...","Ich habe den Datenschutzhinweis gelesen und stimme der Verarbeitung zur Angebotserstellung zu.","Angebot per E-Mail anfordern"],
+    fr:["Devis de traduction","Langue source","Langue cible","Document","Obtenir un devis","Sélectionnez les langues du document et de destination.","Langue du document","Sélectionner","Langue cible","Type de document","Diplôme, passeport, contrat...","J’ai lu l’avis de confidentialité et j’accepte le traitement pour le devis.","Demander par e-mail"],
+    fa:["درخواست قیمت ترجمه","زبان مبدأ","زبان مقصد","مدرک","همین حالا قیمت بگیرید","زبان مدرک و زبان مقصد را انتخاب کنید.","زبان مدرک","انتخاب","زبان مقصد","نوع مدرک","مدرک، گذرنامه، قرارداد...","اطلاعیه حریم خصوصی را خوانده‌ام و با پردازش اطلاعات برای قیمت‌گذاری موافقم.","درخواست قیمت با ایمیل"]
+  };
+  const extra = extras[locale];
+  const word = (tr, english, arabic, index) => extra ? extra[index] : ar ? arabic : en ? english : tr;
+  function submit(event) {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const subject = encodeURIComponent(`${word("Çeviri fiyat talebi","Translation quote","طلب عرض سعر للترجمة",0)}: ${clean(form.get("document"), 80)}`);
+    const body = encodeURIComponent(`${word("Kaynak dil","Source language","لغة الوثيقة",1)}: ${form.get("source")}\n${word("Hedef dil","Target language","اللغة المطلوبة",2)}: ${form.get("target")}\n${word("Belge","Document","الوثيقة",3)}: ${clean(form.get("document"),80)}`);
+    window.location.href = `mailto:yozgattercumeofisi66@hotmail.com?subject=${subject}&body=${body}`;
+  }
+  return <form className="online-cta-box" onSubmit={submit}>
+    <h3>{word("Hemen Fiyat Teklifi Alın","Get a Quote Now","احصل على عرض سعر الآن",4)}</h3>
+    <p>{word("Belge ve hedef çeviri dilini seçin.","Select the document and target languages.","اختر لغة الوثيقة واللغة المطلوبة.",5)}</p>
+    <label>{word("Belge dili","Document language","لغة الوثيقة",6)}<select name="source" required defaultValue=""><option value="" disabled>{word("Seçiniz","Select","اختر",7)}</option><option>Türkçe</option><option>English</option><option>Deutsch</option><option>العربية</option><option>Français</option><option>فارسی</option></select></label>
+    <label>{word("Hedef dil","Target language","اللغة المطلوبة",8)}<select name="target" required defaultValue=""><option value="" disabled>{word("Seçiniz","Select","اختر",7)}</option><option>Türkçe</option><option>English</option><option>Deutsch</option><option>العربية</option><option>Français</option><option>فارسی</option></select></label>
+    <label>{word("Belge türü","Document type","نوع الوثيقة",9)}<input name="document" required maxLength="80" placeholder={word("Diploma, pasaport, sözleşme...","Diploma, passport, contract...","شهادة، جواز سفر، عقد...",10)}/></label>
+    <label className="privacy-check"><input type="checkbox" required/><span>{word("KVKK Aydınlatma Metni’ni okudum; bilgilerimin teklif amacıyla işlenmesini kabul ediyorum.","I have read the privacy notice and consent to processing for a quote.","قرأت إشعار الخصوصية وأوافق على معالجة معلوماتي لغرض إعداد العرض.",11)}</span></label>
+    <button className="btn btn-primary" type="submit">{word("E-posta ile fiyat sor","Request quote by email","اطلب عرضاً عبر البريد",12)}</button>
+  </form>;
+}
 
 export function ContactForm({ locale = "tr" }) {
   const en = locale === "en";
